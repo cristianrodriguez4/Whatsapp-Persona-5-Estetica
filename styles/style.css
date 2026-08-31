@@ -3,187 +3,152 @@
    FASE: PRUEBA DE FONDO PROPIO
    ========================================================= */
 
-
 /* ---------------------------------------------------------
    1. VARIABLES DE WHATSAPP
    --------------------------------------------------------- */
-
 :root {
     /* Color de mensajes recibidos */
     --WDS-systems-bubble-surface-incoming: black !important;
-
     /* Color de mensajes enviados */
     --WDS-systems-bubble-surface-outgoing: red !important;
-
     /* Quitar las esquinas redondeadas originales */
     --xdsiky0: 0px !important;
 }
 
-
 /* ---------------------------------------------------------
    2. OCULTAR LAS COLAS NATIVAS
    ---------------------------------------------------------  */
-
 [data-testid="conversation-panel-messages"] .x1n2onr6 + .x1n2onr6 {
     margin-top: 10px !important;
 }
+
 /* =========================================================
    3. BURBUJA ENVIADA
    ========================================================= */
-
 .x1g5lz36 {
     position: relative !important;
     background: transparent !important;
     overflow: visible !important;
 }
 
-
-/* ---------------------------------------------------------
-   BORDE EXTERIOR BLANCO
-   --------------------------------------------------------- */
-
+/* BORDE EXTERIOR BLANCO */
 .x1g5lz36::before {
     content: "" !important;
-
     position: absolute !important;
-
-    /*
-       Hacemos la capa exterior ligeramente más grande
-       que la superficie original.
-    */
     top: -5px !important;
     bottom: -5px !important;
     left: -30px !important;
     right: -30px !important;
-
     background: white !important;
-
     clip-path: polygon(
         0% 0%,
         94% 0%,
         100% 100%,
         6% 100%
     ) !important;
-
     z-index: 0 !important;
     pointer-events: none !important;
 }
 
-
-/* ---------------------------------------------------------
-   FONDO INTERIOR ROJO
-   --------------------------------------------------------- */
-
+/* FONDO INTERIOR ROJO */
 .x1g5lz36::after {
     content: "" !important;
-
     position: absolute !important;
-
     top: 0 !important;
     bottom: 0 !important;
     left: -25px !important;
     right: -25px !important;
-
     background: var(--WDS-systems-bubble-surface-outgoing) !important;
-
     clip-path: polygon(
         0% 0%,
         94% 0%,
         100% 100%,
         6% 100%
     ) !important;
-
     z-index: 1 !important;
     pointer-events: none !important;
 }
 
-
-/* ---------------------------------------------------------
-   CONTENIDO
-   --------------------------------------------------------- */
-
+/* CONTENIDO */
 .x1g5lz36 > * {
     position: relative !important;
     z-index: 2 !important;
 }
 
-
 /* =========================================================
    4. BURBUJA RECIBIDA
    ========================================================= */
-
 .x1ew7x2d {
     position: relative !important;
     background: transparent !important;
     overflow: visible !important;
 }
 
-
-/* ---------------------------------------------------------
-   BORDE EXTERIOR BLANCO
-   --------------------------------------------------------- */
-
+/* BORDE EXTERIOR BLANCO */
 .x1ew7x2d::before {
     content: "" !important;
-
     position: absolute !important;
-
     top: -5px !important;
     bottom: -5px !important;
     left: -30px !important;
     right: -30px !important;
-
     background: white !important;
-
     clip-path: polygon(
         6% 0%,
         100% 0%,
         94% 100%,
         0% 100%
     ) !important;
-
     z-index: 0 !important;
     pointer-events: none !important;
 }
 
-
-/* ---------------------------------------------------------
-   FONDO INTERIOR NEGRO
-   --------------------------------------------------------- */
-
+/* FONDO INTERIOR NEGRO */
 .x1ew7x2d::after {
     content: "" !important;
-
     position: absolute !important;
-
     top: 0 !important;
     bottom: 0 !important;
     left: -25px !important;
     right: -25px !important;
-
     background: var(--WDS-systems-bubble-surface-incoming) !important;
-
     clip-path: polygon(
         6% 0%,
         100% 0%,
         94% 100%,
         0% 100%
     ) !important;
-
     z-index: 1 !important;
     pointer-events: none !important;
 }
 
-/*
-Citas
-*/
+/* CONTENIDO
+   (Movida aquí desde el final del archivo: le pertenece a
+   esta sección, es la que da el z-index al contenido de la
+   burbuja recibida por encima de sus pseudo-elementos) */
+.x1ew7x2d > * {
+    position: relative !important;
+    z-index: 2 !important;
+}
 
-/* Ocultar barra nativa de la cita */
+/* =========================================================
+   5. MENSAJES CITADOS
+   ========================================================= */
+
+/* ---------------------------------------------------------
+   VERSIÓN ANTERIOR — COMENTADA TEMPORALMENTE
+   Motivo: coexistía con las reglas del PASO 1 de abajo y
+   generaba varias capas blancas superpuestas sin saber cuál
+   estaba haciendo el efecto real. Se deja aquí guardada por
+   si luego rescatamos la barra lateral (.x51ohtg) con su
+   propio color en vez de ocultarla.
+   --------------------------------------------------------- */
+
+/*
 .x51ohtg {
     display: none !important;
 }
 
-/* Fondo de la cita */
 .x1bu39yj {
     background: white !important;
 }
@@ -196,16 +161,12 @@ Citas
 
 [data-testid="quoted-message"]::before {
     content: "" !important;
-
     position: absolute !important;
-
     top: 0 !important;
     bottom: 0 !important;
     left: 0 !important;
     right: 0 !important;
-
     background: white !important;
-
     z-index: 0 !important;
     pointer-events: none !important;
 }
@@ -214,13 +175,103 @@ Citas
     position: relative !important;
     z-index: 1 !important;
 }
-
+*/
 
 /* ---------------------------------------------------------
-   CONTENIDO
+   PASO 1 — Fondo blanco de prueba para la caja de la cita
+   Objetivo: aislar visualmente la caja de la cita antes de
+   diseñarla. Sin ángulos, sin colores finales todavía.
+   --------------------------------------------------------- */
+[data-testid="quoted-message"] {
+    background: white !important;
+    display: block !important;
+    margin-bottom: 8px !important;
+}
+
+/* ---------------------------------------------------------
+   PASO 2 — DESCARTADO
+   Se probó pintar el bloque de respuesta con un color plano
+   (lime) para confirmar que el selector :has() apuntaba al
+   div correcto. Confirmado que sí. Pero al intentar separar
+   cita y respuesta con margin-bottom, no se lograba: el
+   paralelogramo (.x1ew7x2d) está anclado al WRAPPER GRANDE
+   que envuelve cita + respuesta juntas, así que el margen
+   solo estiraba esa forma en vez de crear espacio real.
+   Diagnóstico confirmado visualmente: al aumentar el margen
+   a 50px, el paralelogramo completo creció sin romperse.
+   Ver PASO 3 para la solución real.
    --------------------------------------------------------- */
 
-.x1ew7x2d > * {
+/* ---------------------------------------------------------
+   PASO 3 — RECIBIDOS: separar el paralelogramo real
+   Objetivo: que el wrapper grande (.x1ew7x2d) deje de dibujar
+   su propio paralelogramo cuando contiene una cita, y que el
+   bloque de respuesta (hermano de quoted-message, detectado
+   por posición) dibuje su PROPIO paralelogramo, del mismo
+   tamaño que su contenido real.
+
+   Estado: FUNCIONA para mensajes RECIBIDOS.
+   Pendiente: replicar lo mismo para mensajes ENVIADOS
+   (equivalente a .x1g5lz36) — falta confirmar en el inspector
+   la clase del wrapper y del bloque de respuesta en un
+   mensaje saliente con cita, porque probablemente sean
+   nombres de clase distintos a los del lado recibido.
+   --------------------------------------------------------- */
+
+/* 3.1 — Anular el paralelogramo del wrapper SOLO si tiene cita adentro */
+.x1ew7x2d:has([data-testid="quoted-message"])::before,
+.x1ew7x2d:has([data-testid="quoted-message"])::after {
+    content: none !important;
+}
+
+.x1ew7x2d:has([data-testid="quoted-message"]) {
+    background: transparent !important;
+}
+
+/* 3.2 — Darle el paralelogramo real al bloque de RESPUESTA */
+div:has(> [data-testid="quoted-message"]) + div {
+    position: relative !important;
+    background: transparent !important;
+    overflow: visible !important;
+}
+
+div:has(> [data-testid="quoted-message"]) + div::before {
+    content: "" !important;
+    position: absolute !important;
+    top: -5px !important;
+    bottom: -5px !important;
+    left: -30px !important;
+    right: -30px !important;
+    background: white !important;
+    clip-path: polygon(
+        6% 0%,
+        100% 0%,
+        94% 100%,
+        0% 100%
+    ) !important;
+    z-index: 0 !important;
+    pointer-events: none !important;
+}
+
+div:has(> [data-testid="quoted-message"]) + div::after {
+    content: "" !important;
+    position: absolute !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    left: -25px !important;
+    right: -25px !important;
+    background: var(--WDS-systems-bubble-surface-incoming) !important;
+    clip-path: polygon(
+        6% 0%,
+        100% 0%,
+        94% 100%,
+        0% 100%
+    ) !important;
+    z-index: 1 !important;
+    pointer-events: none !important;
+}
+
+div:has(> [data-testid="quoted-message"]) + div > * {
     position: relative !important;
     z-index: 2 !important;
 }
