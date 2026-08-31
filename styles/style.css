@@ -1,0 +1,226 @@
+/* =========================================================
+   PERSONA 5 - BURBUJAS
+   FASE: PRUEBA DE FONDO PROPIO
+   ========================================================= */
+
+
+/* ---------------------------------------------------------
+   1. VARIABLES DE WHATSAPP
+   --------------------------------------------------------- */
+
+:root {
+    /* Color de mensajes recibidos */
+    --WDS-systems-bubble-surface-incoming: black !important;
+
+    /* Color de mensajes enviados */
+    --WDS-systems-bubble-surface-outgoing: red !important;
+
+    /* Quitar las esquinas redondeadas originales */
+    --xdsiky0: 0px !important;
+}
+
+
+/* ---------------------------------------------------------
+   2. OCULTAR LAS COLAS NATIVAS
+   ---------------------------------------------------------  */
+
+[data-testid="conversation-panel-messages"] .x1n2onr6 + .x1n2onr6 {
+    margin-top: 10px !important;
+}
+/* =========================================================
+   3. BURBUJA ENVIADA
+   ========================================================= */
+
+.x1g5lz36 {
+    position: relative !important;
+    background: transparent !important;
+    overflow: visible !important;
+}
+
+
+/* ---------------------------------------------------------
+   BORDE EXTERIOR BLANCO
+   --------------------------------------------------------- */
+
+.x1g5lz36::before {
+    content: "" !important;
+
+    position: absolute !important;
+
+    /*
+       Hacemos la capa exterior ligeramente más grande
+       que la superficie original.
+    */
+    top: -5px !important;
+    bottom: -5px !important;
+    left: -30px !important;
+    right: -30px !important;
+
+    background: white !important;
+
+    clip-path: polygon(
+        0% 0%,
+        94% 0%,
+        100% 100%,
+        6% 100%
+    ) !important;
+
+    z-index: 0 !important;
+    pointer-events: none !important;
+}
+
+
+/* ---------------------------------------------------------
+   FONDO INTERIOR ROJO
+   --------------------------------------------------------- */
+
+.x1g5lz36::after {
+    content: "" !important;
+
+    position: absolute !important;
+
+    top: 0 !important;
+    bottom: 0 !important;
+    left: -25px !important;
+    right: -25px !important;
+
+    background: var(--WDS-systems-bubble-surface-outgoing) !important;
+
+    clip-path: polygon(
+        0% 0%,
+        94% 0%,
+        100% 100%,
+        6% 100%
+    ) !important;
+
+    z-index: 1 !important;
+    pointer-events: none !important;
+}
+
+
+/* ---------------------------------------------------------
+   CONTENIDO
+   --------------------------------------------------------- */
+
+.x1g5lz36 > * {
+    position: relative !important;
+    z-index: 2 !important;
+}
+
+
+/* =========================================================
+   4. BURBUJA RECIBIDA
+   ========================================================= */
+
+.x1ew7x2d {
+    position: relative !important;
+    background: transparent !important;
+    overflow: visible !important;
+}
+
+
+/* ---------------------------------------------------------
+   BORDE EXTERIOR BLANCO
+   --------------------------------------------------------- */
+
+.x1ew7x2d::before {
+    content: "" !important;
+
+    position: absolute !important;
+
+    top: -5px !important;
+    bottom: -5px !important;
+    left: -30px !important;
+    right: -30px !important;
+
+    background: white !important;
+
+    clip-path: polygon(
+        6% 0%,
+        100% 0%,
+        94% 100%,
+        0% 100%
+    ) !important;
+
+    z-index: 0 !important;
+    pointer-events: none !important;
+}
+
+
+/* ---------------------------------------------------------
+   FONDO INTERIOR NEGRO
+   --------------------------------------------------------- */
+
+.x1ew7x2d::after {
+    content: "" !important;
+
+    position: absolute !important;
+
+    top: 0 !important;
+    bottom: 0 !important;
+    left: -25px !important;
+    right: -25px !important;
+
+    background: var(--WDS-systems-bubble-surface-incoming) !important;
+
+    clip-path: polygon(
+        6% 0%,
+        100% 0%,
+        94% 100%,
+        0% 100%
+    ) !important;
+
+    z-index: 1 !important;
+    pointer-events: none !important;
+}
+
+/*
+Citas
+*/
+
+/* Ocultar barra nativa de la cita */
+.x51ohtg {
+    display: none !important;
+}
+
+/* Fondo de la cita */
+.x1bu39yj {
+    background: white !important;
+}
+
+[data-testid="quoted-message"] {
+    position: relative !important;
+    background: transparent !important;
+    overflow: visible !important;
+}
+
+[data-testid="quoted-message"]::before {
+    content: "" !important;
+
+    position: absolute !important;
+
+    top: 0 !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+
+    background: white !important;
+
+    z-index: 0 !important;
+    pointer-events: none !important;
+}
+
+[data-testid="quoted-message"] > * {
+    position: relative !important;
+    z-index: 1 !important;
+}
+
+
+/* ---------------------------------------------------------
+   CONTENIDO
+   --------------------------------------------------------- */
+
+.x1ew7x2d > * {
+    position: relative !important;
+    z-index: 2 !important;
+}
