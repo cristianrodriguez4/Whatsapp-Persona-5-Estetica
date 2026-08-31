@@ -135,47 +135,6 @@
    5. MENSAJES CITADOS
    ========================================================= */
 
-/* ---------------------------------------------------------
-   VERSIÓN ANTERIOR — COMENTADA TEMPORALMENTE
-   Motivo: coexistía con las reglas del PASO 1 de abajo y
-   generaba varias capas blancas superpuestas sin saber cuál
-   estaba haciendo el efecto real. Se deja aquí guardada por
-   si luego rescatamos la barra lateral (.x51ohtg) con su
-   propio color en vez de ocultarla.
-   --------------------------------------------------------- */
-
-/*
-.x51ohtg {
-    display: none !important;
-}
-
-.x1bu39yj {
-    background: white !important;
-}
-
-[data-testid="quoted-message"] {
-    position: relative !important;
-    background: transparent !important;
-    overflow: visible !important;
-}
-
-[data-testid="quoted-message"]::before {
-    content: "" !important;
-    position: absolute !important;
-    top: 0 !important;
-    bottom: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    background: white !important;
-    z-index: 0 !important;
-    pointer-events: none !important;
-}
-
-[data-testid="quoted-message"] > * {
-    position: relative !important;
-    z-index: 1 !important;
-}
-*/
 
 /* ---------------------------------------------------------
    PASO 1 — Fondo blanco de prueba para la caja de la cita
@@ -203,22 +162,26 @@
    --------------------------------------------------------- */
 
 /* ---------------------------------------------------------
-   PASO 3 — RECIBIDOS: separar el paralelogramo real
-   Objetivo: que el wrapper grande (.x1ew7x2d) deje de dibujar
-   su propio paralelogramo cuando contiene una cita, y que el
-   bloque de respuesta (hermano de quoted-message, detectado
-   por posición) dibuje su PROPIO paralelogramo, del mismo
-   tamaño que su contenido real.
+   PASO 3 — separar el paralelogramo real (RECIBIDO Y ENVIADO)
 
-   Estado: FUNCIONA para mensajes RECIBIDOS.
-   Pendiente: replicar lo mismo para mensajes ENVIADOS
-   (equivalente a .x1g5lz36) — falta confirmar en el inspector
-   la clase del wrapper y del bloque de respuesta en un
-   mensaje saliente con cita, porque probablemente sean
-   nombres de clase distintos a los del lado recibido.
+   Bug detectado: la primera versión de este paso seleccionaba
+   "cualquier div hermano de una cita" sin importar si el
+   mensaje era enviado o recibido, por lo que las respuestas
+   en mensajes ENVIADOS se pintaban con el estilo de RECIBIDO
+   (blanco/negro) en vez de blanco/rojo, y además competían
+   con el paralelogramo que .x1g5lz36 seguía dibujando por su
+   cuenta (a ese wrapper nunca se le había dicho que se
+   callara si tenía una cita adentro).
+
+   Corrección: cada regla queda anclada a su wrapper (.x1ew7x2d
+   para recibido, .x1g5lz36 para enviado) usando el
+   combinador descendiente, así cada lado solo afecta a sus
+   propios mensajes.
    --------------------------------------------------------- */
 
-/* 3.1 — Anular el paralelogramo del wrapper SOLO si tiene cita adentro */
+/* ===== 3.A — RECIBIDOS ===== */
+
+/* Anular el paralelogramo del wrapper SOLO si tiene cita adentro */
 .x1ew7x2d:has([data-testid="quoted-message"])::before,
 .x1ew7x2d:has([data-testid="quoted-message"])::after {
     content: none !important;
@@ -228,14 +191,15 @@
     background: transparent !important;
 }
 
-/* 3.2 — Darle el paralelogramo real al bloque de RESPUESTA */
-div:has(> [data-testid="quoted-message"]) + div {
+/* Darle el paralelogramo real al bloque de RESPUESTA,
+   solo dentro de un wrapper de mensaje RECIBIDO */
+.x1ew7x2d div:has(> [data-testid="quoted-message"]) + div {
     position: relative !important;
     background: transparent !important;
     overflow: visible !important;
 }
 
-div:has(> [data-testid="quoted-message"]) + div::before {
+.x1ew7x2d div:has(> [data-testid="quoted-message"]) + div::before {
     content: "" !important;
     position: absolute !important;
     top: -5px !important;
@@ -253,7 +217,7 @@ div:has(> [data-testid="quoted-message"]) + div::before {
     pointer-events: none !important;
 }
 
-div:has(> [data-testid="quoted-message"]) + div::after {
+.x1ew7x2d div:has(> [data-testid="quoted-message"]) + div::after {
     content: "" !important;
     position: absolute !important;
     top: 0 !important;
@@ -271,7 +235,68 @@ div:has(> [data-testid="quoted-message"]) + div::after {
     pointer-events: none !important;
 }
 
-div:has(> [data-testid="quoted-message"]) + div > * {
+.x1ew7x2d div:has(> [data-testid="quoted-message"]) + div > * {
+    position: relative !important;
+    z-index: 2 !important;
+}
+
+/* ===== 3.B — ENVIADOS ===== */
+
+/* Anular el paralelogramo del wrapper SOLO si tiene cita adentro */
+.x1g5lz36:has([data-testid="quoted-message"])::before,
+.x1g5lz36:has([data-testid="quoted-message"])::after {
+    content: none !important;
+}
+
+.x1g5lz36:has([data-testid="quoted-message"]) {
+    background: transparent !important;
+}
+
+/* Darle el paralelogramo real al bloque de RESPUESTA,
+   solo dentro de un wrapper de mensaje ENVIADO */
+.x1g5lz36 div:has(> [data-testid="quoted-message"]) + div {
+    position: relative !important;
+    background: transparent !important;
+    overflow: visible !important;
+}
+
+.x1g5lz36 div:has(> [data-testid="quoted-message"]) + div::before {
+    content: "" !important;
+    position: absolute !important;
+    top: -5px !important;
+    bottom: -5px !important;
+    left: -30px !important;
+    right: -30px !important;
+    background: white !important;
+    clip-path: polygon(
+        0% 0%,
+        94% 0%,
+        100% 100%,
+        6% 100%
+    ) !important;
+    z-index: 0 !important;
+    pointer-events: none !important;
+}
+
+.x1g5lz36 div:has(> [data-testid="quoted-message"]) + div::after {
+    content: "" !important;
+    position: absolute !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    left: -25px !important;
+    right: -25px !important;
+    background: var(--WDS-systems-bubble-surface-outgoing) !important;
+    clip-path: polygon(
+        0% 0%,
+        94% 0%,
+        100% 100%,
+        6% 100%
+    ) !important;
+    z-index: 1 !important;
+    pointer-events: none !important;
+}
+
+.x1g5lz36 div:has(> [data-testid="quoted-message"]) + div > * {
     position: relative !important;
     z-index: 2 !important;
 }
