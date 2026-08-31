@@ -135,15 +135,171 @@
    5. MENSAJES CITADOS
    ========================================================= */
 
+/* ---------------------------------------------------------
+   VERSIÓN ANTERIOR — COMENTADA TEMPORALMENTE
+   Motivo: coexistía con las reglas del PASO 1 de abajo y
+   generaba varias capas blancas superpuestas sin saber cuál
+   estaba haciendo el efecto real. Se deja aquí guardada por
+   si luego rescatamos la barra lateral (.x51ohtg) con su
+   propio color en vez de ocultarla.
+   --------------------------------------------------------- */
+
+/*
+.x51ohtg {
+    display: none !important;
+}
+
+.x1bu39yj {
+    background: white !important;
+}
+
+[data-testid="quoted-message"] {
+    position: relative !important;
+    background: transparent !important;
+    overflow: visible !important;
+}
+
+[data-testid="quoted-message"]::before {
+    content: "" !important;
+    position: absolute !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    background: white !important;
+    z-index: 0 !important;
+    pointer-events: none !important;
+}
+
+[data-testid="quoted-message"] > * {
+    position: relative !important;
+    z-index: 1 !important;
+}
+*/
 
 /* ---------------------------------------------------------
-   PASO 1 — Fondo blanco de prueba para la caja de la cita
-   Objetivo: aislar visualmente la caja de la cita antes de
-   diseñarla. Sin ángulos, sin colores finales todavía.
+   PASO 1 — Estilo final de la caja de la cita (RECIBIDO / ENVIADO)
+
+   Se le da a la cita el MISMO tratamiento visual que a las
+   demás burbujas: se extiende un poco a los costados y se
+   recorta con el mismo ángulo (clip-path), en vez de ser un
+   simple rectángulo con borde. La diferencia de color se
+   mantiene invertida respecto al mensaje normal:
+   - Cita en mensaje RECIBIDO: fondo blanco, texto negro
+   - Cita en mensaje ENVIADO:  fondo negro, texto blanco
+   El borde exterior sigue siendo blanco en ambos casos,
+   igual que en el resto de la interfaz.
    --------------------------------------------------------- */
-[data-testid="quoted-message"] {
+
+/* ===== Cita dentro de un mensaje RECIBIDO ===== */
+.x1ew7x2d [data-testid="quoted-message"] {
+    position: relative !important;
+    background: transparent !important;
+    overflow: visible !important;
+}
+
+.x1ew7x2d [data-testid="quoted-message"]::before {
+    content: "" !important;
+    position: absolute !important;
+    top: -5px !important;
+    bottom: -5px !important;
+    left: -30px !important;
+    right: -30px !important;
     background: white !important;
-    display: block !important;
+    clip-path: polygon(
+        6% 0%,
+        100% 0%,
+        94% 100%,
+        0% 100%
+    ) !important;
+    z-index: 0 !important;
+    pointer-events: none !important;
+}
+
+.x1ew7x2d [data-testid="quoted-message"]::after {
+    content: "" !important;
+    position: absolute !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    left: -25px !important;
+    right: -25px !important;
+    background: white !important;
+    clip-path: polygon(
+        6% 0%,
+        100% 0%,
+        94% 100%,
+        0% 100%
+    ) !important;
+    z-index: 1 !important;
+    pointer-events: none !important;
+}
+
+.x1ew7x2d [data-testid="quoted-message"] > * {
+    position: relative !important;
+    z-index: 2 !important;
+}
+
+.x1ew7x2d [data-testid="quoted-message"] * {
+    color: black !important;
+}
+
+.x1ew7x2d [data-testid="quoted-message"] {
+    margin-bottom: 8px !important;
+}
+
+/* ===== Cita dentro de un mensaje ENVIADO ===== */
+.x1g5lz36 [data-testid="quoted-message"] {
+    position: relative !important;
+    background: transparent !important;
+    overflow: visible !important;
+}
+
+.x1g5lz36 [data-testid="quoted-message"]::before {
+    content: "" !important;
+    position: absolute !important;
+    top: -5px !important;
+    bottom: -5px !important;
+    left: -30px !important;
+    right: -30px !important;
+    background: white !important;
+    clip-path: polygon(
+        0% 0%,
+        94% 0%,
+        100% 100%,
+        6% 100%
+    ) !important;
+    z-index: 0 !important;
+    pointer-events: none !important;
+}
+
+.x1g5lz36 [data-testid="quoted-message"]::after {
+    content: "" !important;
+    position: absolute !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    left: -25px !important;
+    right: -25px !important;
+    background: black !important;
+    clip-path: polygon(
+        0% 0%,
+        94% 0%,
+        100% 100%,
+        6% 100%
+    ) !important;
+    z-index: 1 !important;
+    pointer-events: none !important;
+}
+
+.x1g5lz36 [data-testid="quoted-message"] > * {
+    position: relative !important;
+    z-index: 2 !important;
+}
+
+.x1g5lz36 [data-testid="quoted-message"] * {
+    color: white !important;
+}
+
+.x1g5lz36 [data-testid="quoted-message"] {
     margin-bottom: 8px !important;
 }
 
