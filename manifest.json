@@ -19,7 +19,7 @@
         "./scripts/script.js"
       ],
       "css": [
-        "./styles/style.css"
+        "./styles/chat/burbujas.css"
       ],
       "run_at": "document_idle"
     }
