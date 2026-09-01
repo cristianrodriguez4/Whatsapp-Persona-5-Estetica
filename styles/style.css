@@ -10,7 +10,7 @@
     /* Color de mensajes recibidos */
     --WDS-systems-bubble-surface-incoming: black !important;
     /* Color de mensajes enviados */
-    --WDS-systems-bubble-surface-outgoing: red !important;
+    --WDS-systems-bubble-surface-outgoing: white !important;
     /* Quitar las esquinas redondeadas originales */
     --xdsiky0: 0px !important;
 }
@@ -20,6 +20,10 @@
    ---------------------------------------------------------  */
 [data-testid="conversation-panel-messages"] .x1n2onr6 + .x1n2onr6 {
     margin-top: 10px !important;
+}
+ 
+[data-testid="tail-out"], [data-testid="tail-in"]{
+    display: none;
 }
 
 /* =========================================================
@@ -39,7 +43,7 @@
     bottom: -5px !important;
     left: -30px !important;
     right: -30px !important;
-    background: white !important;
+    background: black !important;
     clip-path: polygon(
         0% 0%,
         94% 0%,
@@ -58,7 +62,7 @@
     bottom: 0 !important;
     left: -25px !important;
     right: -25px !important;
-    background: var(--WDS-systems-bubble-surface-outgoing) !important;
+    background: white !important;
     clip-path: polygon(
         0% 0%,
         94% 0%,
@@ -73,6 +77,10 @@
 .x1g5lz36 > * {
     position: relative !important;
     z-index: 2 !important;
+}
+
+.x1g5lz36 * {
+    color: black !important;
 }
 
 /* =========================================================
@@ -121,11 +129,7 @@
     z-index: 1 !important;
     pointer-events: none !important;
 }
-
-/* CONTENIDO
-   (Movida aquí desde el final del archivo: le pertenece a
-   esta sección, es la que da el z-index al contenido de la
-   burbuja recibida por encima de sus pseudo-elementos) */
+/* CONTENIDO */ 
 .x1ew7x2d > * {
     position: relative !important;
     z-index: 2 !important;
@@ -136,66 +140,29 @@
    ========================================================= */
 
 /* ---------------------------------------------------------
-   VERSIÓN ANTERIOR — COMENTADA TEMPORALMENTE
-   Motivo: coexistía con las reglas del PASO 1 de abajo y
-   generaba varias capas blancas superpuestas sin saber cuál
-   estaba haciendo el efecto real. Se deja aquí guardada por
-   si luego rescatamos la barra lateral (.x51ohtg) con su
-   propio color en vez de ocultarla.
-   --------------------------------------------------------- */
-
-/*
-.x51ohtg {
-    display: none !important;
-}
-
-.x1bu39yj {
-    background: white !important;
-}
-
-[data-testid="quoted-message"] {
-    position: relative !important;
-    background: transparent !important;
-    overflow: visible !important;
-}
-
-[data-testid="quoted-message"]::before {
-    content: "" !important;
-    position: absolute !important;
-    top: 0 !important;
-    bottom: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    background: white !important;
-    z-index: 0 !important;
-    pointer-events: none !important;
-}
-
-[data-testid="quoted-message"] > * {
-    position: relative !important;
-    z-index: 1 !important;
-}
-*/
-
-/* ---------------------------------------------------------
    PASO 1 — Estilo final de la caja de la cita (RECIBIDO / ENVIADO)
-
-   Se le da a la cita el MISMO tratamiento visual que a las
-   demás burbujas: se extiende un poco a los costados y se
-   recorta con el mismo ángulo (clip-path), en vez de ser un
-   simple rectángulo con borde. La diferencia de color se
-   mantiene invertida respecto al mensaje normal:
    - Cita en mensaje RECIBIDO: fondo blanco, texto negro
    - Cita en mensaje ENVIADO:  fondo negro, texto blanco
-   El borde exterior sigue siendo blanco en ambos casos,
-   igual que en el resto de la interfaz.
    --------------------------------------------------------- */
+
+/* QUITAR LA BARRA DEL COMIENZO DEL MENSAJE CITADO */
+
+.x51ohtg{
+    width: 0;
+}
+
+/* Quitarle el fondo a los mensajes citados recibidos*/
+.x1bu39yj{
+    background: transparent;
+}
 
 /* ===== Cita dentro de un mensaje RECIBIDO ===== */
 .x1ew7x2d [data-testid="quoted-message"] {
     position: relative !important;
     background: transparent !important;
     overflow: visible !important;
+
+    transform: rotate(-4deg);
 }
 
 .x1ew7x2d [data-testid="quoted-message"]::before {
@@ -205,7 +172,7 @@
     bottom: -5px !important;
     left: -30px !important;
     right: -30px !important;
-    background: white !important;
+    background: black !important;
     clip-path: polygon(
         6% 0%,
         100% 0%,
@@ -244,14 +211,18 @@
 }
 
 .x1ew7x2d [data-testid="quoted-message"] {
-    margin-bottom: 8px !important;
+    margin-bottom: 12px !important;
 }
 
+
 /* ===== Cita dentro de un mensaje ENVIADO ===== */
+
 .x1g5lz36 [data-testid="quoted-message"] {
     position: relative !important;
     background: transparent !important;
     overflow: visible !important;
+
+    transform: rotate(4deg);
 }
 
 .x1g5lz36 [data-testid="quoted-message"]::before {
@@ -300,36 +271,13 @@
 }
 
 .x1g5lz36 [data-testid="quoted-message"] {
-    margin-bottom: 8px !important;
+    margin-bottom: 12px !important;
 }
 
 /* ---------------------------------------------------------
-   PASO 2 — DESCARTADO
-   Se probó pintar el bloque de respuesta con un color plano
-   (lime) para confirmar que el selector :has() apuntaba al
-   div correcto. Confirmado que sí. Pero al intentar separar
-   cita y respuesta con margin-bottom, no se lograba: el
-   paralelogramo (.x1ew7x2d) está anclado al WRAPPER GRANDE
-   que envuelve cita + respuesta juntas, así que el margen
-   solo estiraba esa forma en vez de crear espacio real.
-   Diagnóstico confirmado visualmente: al aumentar el margen
-   a 50px, el paralelogramo completo creció sin romperse.
-   Ver PASO 3 para la solución real.
-   --------------------------------------------------------- */
+   PASO 2 — separar el paralelogramo real (RECIBIDO Y ENVIADO)
 
-/* ---------------------------------------------------------
-   PASO 3 — separar el paralelogramo real (RECIBIDO Y ENVIADO)
-
-   Bug detectado: la primera versión de este paso seleccionaba
-   "cualquier div hermano de una cita" sin importar si el
-   mensaje era enviado o recibido, por lo que las respuestas
-   en mensajes ENVIADOS se pintaban con el estilo de RECIBIDO
-   (blanco/negro) en vez de blanco/rojo, y además competían
-   con el paralelogramo que .x1g5lz36 seguía dibujando por su
-   cuenta (a ese wrapper nunca se le había dicho que se
-   callara si tenía una cita adentro).
-
-   Corrección: cada regla queda anclada a su wrapper (.x1ew7x2d
+   Cada regla queda anclada a su wrapper (.x1ew7x2d
    para recibido, .x1g5lz36 para enviado) usando el
    combinador descendiente, así cada lado solo afecta a sus
    propios mensajes.
