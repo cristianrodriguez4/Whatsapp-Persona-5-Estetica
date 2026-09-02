@@ -1,0 +1,13 @@
+[data-testid="conversation-panel-messages"]
+{
+    background-color: rgb(212, 0, 0);
+}
+
+
+/* Fondo detrás de todo el compositor -> se queda simple, en rojo */
+[data-testid="compose-box"] {
+    background-color: rgb(212, 0, 0) !important;
+    border-radius: 0 !important;
+}
+
+

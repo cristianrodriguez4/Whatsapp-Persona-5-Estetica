@@ -162,7 +162,6 @@
     background: transparent !important;
     overflow: visible !important;
 
-    transform: rotate(-4deg);
 }
 
 .x1ew7x2d [data-testid="quoted-message"]::before {
@@ -222,7 +221,6 @@
     background: transparent !important;
     overflow: visible !important;
 
-    transform: rotate(4deg);
 }
 
 .x1g5lz36 [data-testid="quoted-message"]::before {

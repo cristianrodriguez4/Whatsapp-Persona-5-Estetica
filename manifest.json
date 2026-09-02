@@ -16,10 +16,12 @@
         "https://web.whatsapp.com/*"
       ],
       "js": [
-        "./scripts/script.js"
+        "./scripts/chat/fondo.js"
       ],
       "css": [
-        "./styles/chat/burbujas.css"
+        "./styles/chat/burbujas.css",
+        "./styles/chat/input.css",
+        "./styles/chat/fondo.css"
       ],
       "run_at": "document_idle"
     }

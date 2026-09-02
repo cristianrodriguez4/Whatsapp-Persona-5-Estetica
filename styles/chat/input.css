@@ -1,0 +1,77 @@
+/*
+Quitar esquinas redondeadas del input
+*/
+
+.x91sizk { border-start-end-radius: 0 !important; }
+.x1vva9xg { border-end-end-radius: 0 !important; }
+.x1jfkl46 { border-end-start-radius: 0 !important; }
+.x17m9png { border-start-start-radius: 0 !important; }
+
+/* La clase que realmente envuelve el cuadro de texto ->
+   se vuelve transparente y deja que los pseudo-elementos pinten */
+.xk7ee7b {
+    position: relative !important;
+    background: transparent !important;
+    border-radius: 0 !important;
+    overflow: visible !important;
+}
+
+/* BORDE EXTERIOR NEGRO */
+.xk7ee7b::before {
+    content: "" !important;
+    position: absolute !important;
+    top: -5px !important;
+    bottom: -5px !important;
+    left: -10px !important;
+    right: -10px !important;
+    background: black !important;
+    clip-path: polygon(
+        0% 0%,
+        98% 0%,
+        100% 100%,
+        2% 100%
+    ) !important;
+    z-index: 0 !important;
+    pointer-events: none !important;
+}
+
+/* RELLENO INTERIOR BLANCO */
+.xk7ee7b::after {
+    content: "" !important;
+    position: absolute !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    left: -5px !important;
+    right: -5px !important;
+    background: white !important;
+    clip-path: polygon(
+        0% 0%,
+        98% 0%,
+        100% 100%,
+        2% 100%
+    ) !important;
+    z-index: 1 !important;
+    pointer-events: none !important;
+}
+
+/* CONTENIDO (el texto que escribes) por encima de los pseudo-elementos */
+.xk7ee7b > * {
+    position: relative !important;
+    z-index: 2 !important;
+}
+
+.xk7ee7b * {
+    color: black !important;
+}
+
+/* Quitar la sombra que causa problemas y se pisa*/
+.xkfubxc {
+    box-shadow: none !important;
+}
+
+/* Placeholder ("Escribe un mensaje") en gris oscuro.
+   Si no aplica, inspecciona directamente el elemento del placeholder. */
+[data-testid="compose-box"] div[contenteditable="true"]:empty:before {
+    color: #4a4a4a !important;
+    opacity: 1 !important;
+}
