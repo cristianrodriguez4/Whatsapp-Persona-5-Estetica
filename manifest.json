@@ -21,7 +21,8 @@
       "css": [
         "./styles/chat/burbujas.css",
         "./styles/chat/input.css",
-        "./styles/chat/fondo.css"
+        "./styles/chat/fondo.css",
+        "./styles/chat/cabecera.css"
       ],
       "run_at": "document_idle"
     }

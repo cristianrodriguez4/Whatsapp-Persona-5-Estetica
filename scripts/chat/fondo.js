@@ -323,7 +323,6 @@ function calcularConexionesP5(mensajes) {
     return conexiones;
 }
 
-
 /**
  * Muestra las conexiones en consola.
  */
@@ -344,6 +343,8 @@ function mostrarConexionesP5() {
 
     return conexiones;
 }
+
+
 
 window.mostrarMensajesP5 = mostrarMensajesP5;
 window.mostrarConexionesP5 = mostrarConexionesP5;
