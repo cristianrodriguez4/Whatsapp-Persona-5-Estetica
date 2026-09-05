@@ -419,11 +419,11 @@ function mostrarConexionesP5() {
 
 const P5_CONFIG_RAYO = {
     color: 'red',
-    segmentosMin: 4,   // nº mínimo de quiebres en el trazo
-    segmentosMax: 6,   // nº máximo de quiebres
-    jitterMax: 30,      // desviación perpendicular máxima (px)
-    grosorMin: 6,       // grosor mínimo del rayo (px)
-    grosorMax: 20       // grosor máximo del rayo (px)
+    segmentosMin: 2,   // nº mínimo de quiebres en el trazo
+    segmentosMax: 2,   // nº máximo de quiebres
+    jitterMax: 60,      // desviación perpendicular máxima (px)
+    grosorMin: 40,       // grosor mínimo del rayo (px)
+    grosorMax: 55       // grosor máximo del rayo (px)
 };
 
 
