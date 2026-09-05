@@ -418,14 +418,9 @@ function mostrarConexionesP5() {
    ========================================================= */
 
 const P5_CONFIG_RAYO = {
-    color: 'red',
-    segmentosMin: 2,   // nº mínimo de quiebres en el trazo
-    segmentosMax: 2,   // nº máximo de quiebres
-    jitterMax: 60,      // desviación perpendicular máxima (px)
-    grosorMin: 40,       // grosor mínimo del rayo (px)
-    grosorMax: 55       // grosor máximo del rayo (px)
+    color: '#e3021d',
+    grosor: 28          // ancho del cuadrado/barra (px)
 };
-
 
 /* ---- 3.1 Generador de números pseudoaleatorios con semilla ---- */
 
@@ -524,19 +519,33 @@ function construirPathRayoP5(centrales, perpX, perpY) {
 }
 
 /**
- * Genera el atributo "d" de un path SVG que representa un rayo
- * irregular entre dos puntos. "textoSemilla" fija la forma para
- * que sea estable entre re-renderizados.
+ * Genera un polígono rectangular (barra/cuadrado) entre dos puntos.
+ * El rectángulo sigue la dirección del segmento y tiene el grosor indicado.
  */
-function generarTrazoRayoP5(x1, y1, x2, y2, textoSemilla, config) {
-    const semilla = semillaDesdeTextoP5(textoSemilla);
-    const aleatorio = crearGeneradorAleatorioP5(semilla);
+function generarTrazoCuadradoP5(x1, y1, x2, y2, config) {
+    const dx = x2 - x1;
+    const dy = y2 - y1;
+    const distancia = Math.hypot(dx, dy) || 1;
 
-    const { centrales, perpX, perpY } = generarPuntosRayoP5(
-        x1, y1, x2, y2, aleatorio, config
-    );
+    // Vector perpendicular normalizado
+    const perpX = -(dy / distancia);
+    const perpY =  (dx / distancia);
 
-    return construirPathRayoP5(centrales, perpX, perpY);
+    const half = (config.grosor || 24) / 2;
+
+    // 4 esquinas del rectángulo
+    const p1 = { x: x1 + perpX * half, y: y1 + perpY * half };
+    const p2 = { x: x1 - perpX * half, y: y1 - perpY * half };
+    const p3 = { x: x2 - perpX * half, y: y2 - perpY * half };
+    const p4 = { x: x2 + perpX * half, y: y2 + perpY * half };
+
+    return [
+        `M ${p1.x.toFixed(1)} ${p1.y.toFixed(1)}`,
+        `L ${p4.x.toFixed(1)} ${p4.y.toFixed(1)}`,
+        `L ${p3.x.toFixed(1)} ${p3.y.toFixed(1)}`,
+        `L ${p2.x.toFixed(1)} ${p2.y.toFixed(1)}`,
+        'Z'
+    ].join(' ');
 }
 
 
@@ -594,22 +603,17 @@ function dibujarConexionesP5(svg, conexiones) {
     svg.innerHTML = '';
 
     conexiones.forEach((conexion) => {
-        // Semilla estable para que el mismo par de mensajes
-        // siempre genere la misma forma de rayo
-        const textoSemilla = `${conexion.desde}-${conexion.hacia}`;
-
-        const d = generarTrazoRayoP5(
+        const d = generarTrazoCuadradoP5(
             conexion.x1,
             conexion.y1,
             conexion.x2,
             conexion.y2,
-            textoSemilla,
             P5_CONFIG_RAYO
         );
 
         const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
         path.setAttribute('d', d);
-        path.setAttribute('class', 'p5-rayo-conexion');
+        path.setAttribute('class', 'p5-cuadrado-conexion');
         path.style.fill = P5_CONFIG_RAYO.color;
         path.style.stroke = 'none';
 
