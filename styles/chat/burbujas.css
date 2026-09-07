@@ -35,7 +35,7 @@
     overflow: visible !important;
 }
 
-/* BORDE EXTERIOR BLANCO */
+/* BORDE EXTERIOR NEGRO */
 .x1g5lz36::before {
     content: "" !important;
     position: absolute !important;
@@ -54,7 +54,7 @@
     pointer-events: none !important;
 }
 
-/* FONDO INTERIOR ROJO */
+/* FONDO INTERIOR BLANCO */
 .x1g5lz36::after {
     content: "" !important;
     position: absolute !important;
@@ -82,6 +82,7 @@
 .x1g5lz36 * {
     color: black !important;
 }
+
 
 /* =========================================================
    4. BURBUJA RECIBIDA

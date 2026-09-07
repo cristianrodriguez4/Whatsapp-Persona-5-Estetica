@@ -22,7 +22,8 @@
         "./styles/chat/burbujas.css",
         "./styles/chat/input.css",
         "./styles/chat/fondo.css",
-        "./styles/chat/cabecera.css"
+        "./styles/chat/cabecera.css",
+        "./styles/lista_chats/lista_chats.css"
       ],
       "run_at": "document_idle"
     }
