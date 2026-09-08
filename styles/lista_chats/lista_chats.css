@@ -9,25 +9,22 @@
    ------------------------------------------------------------ */
 
 /* Contenedor del buscador + filtros, por si tiene su propio fondo */
+
 div[data-testid="chat-list-search-container"],
 div:has(div[data-testid="chat-list-search-container"]),
-header[data-testid="chatlist-header"] header
+header[data-testid="chatlist-header"] header,
+div[data-testid="chat-list"],
+div[aria-label="chat-list-filters"],
+div[data-testid^="list-item-"],
+#pane-side
 {
-  background: #0d0c0b !important;
+  background: transparent !important;
 }
 
-/* Contenedor de la lista de chats en sí */
-div[data-testid="chat-list"] {
-  background: #0d0c0b !important;
+div:has(header[data-testid="chatlist-header"]){
+  background-image: url(../../icons/img2.svg) !important;
 }
 
-div[aria-label="chat-list-filters"] {
-  background: #0d0c0b !important;
-}
-
-div[data-testid^="list-item-"] {
-  background: #0d0c0b !important;
-}
 
 /* ------------------------------------------------------------
    2. BOTON DE NUEVO CHAT
@@ -37,13 +34,13 @@ div[data-testid^="list-item-"] {
   background-color: white !important;
   border-radius: 0 !important;
   bottom: -5px !important;
-  left: -10px !important;
-  right: -10px !important;
+  left: -15px !important;
+  right: -15px !important;
   clip-path: polygon(
       0% 0%,
-      94% 0%,
+      80% 0%,
       100% 100%,
-      6% 100%
+      20% 100%
   )
 }
 
@@ -54,13 +51,13 @@ div[data-testid^="list-item-"] {
 div[aria-label="chat-list-filters"] div[data-testid="filter-button"]{
   bottom: -5px !important;
   top: -5px !important;
-  left: -10px !important;
-  right: -10px !important;
+  left: -5px !important;
+  right: -5px !important;
   clip-path: polygon(
-      0% 0%,
-      94% 0%,
-      100% 100%,
-      6% 100%
+      4% 0%,
+      100% 0%,
+      96% 100%,
+      0% 100%
   )
 }
 
@@ -68,7 +65,7 @@ div[aria-label="chat-list-filters"] div[data-testid="filter-button"] span,
 div[aria-label="chat-list-filters"] div[data-testid="filter-button"] button {
   background-color: white;
   border-radius: 0;
-  color: black !important;
+  color: #0d0c0b !important;
   
 }
 
@@ -76,13 +73,13 @@ div[aria-label="chat-list-filters"] div[data-testid="filter-button"] button {
 div[aria-label="chat-list-filters"] div[data-testid="filter-button"] button[aria-selected="true"]{
   pointer-events: none;
   color: white !important;
-  background-color: black !important;
+  background-color: #0d0c0b !important;
   border-color: white  !important;
   border-width: 4px;
 }
 
 div[aria-label="chat-list-filters"] div[data-testid="filter-button"] button[aria-selected="true"] span:not(:has(*)) {
-  background-color: black !important;
+  background-color: #0d0c0b !important;
   color: white !important;
 }
 
@@ -94,13 +91,11 @@ div[aria-label="chat-list-filters"] div[data-testid="filter-button"] button[aria
 
 /* La caja que envuelve foto + nombre + mensaje + hora */
 
-div[data-testid="chat-list"] > div{
-  top: 20px;
-}
+
 
 div[data-testid="cell-frame-container"]{
   margin-top: 10px;
-  background-color: black;
+  background-color: #0d0c0b;
   border-radius: 0;
   bottom: -10px !important;
   top: -10px !important;
@@ -116,14 +111,12 @@ div[data-testid="cell-frame-container"]{
 
 div[data-testid^="list-item-"]{
   background-color: white !important;
-  bottom: -10px !important;
-  top: -10px !important;
-  bottom: 10px !important;
+
 
   clip-path: polygon(
-      4% 0%,
+      2% 0%,
       100% 0%,
-      96% 100%,
+      98% 100%,
       0% 100%
   );
 }
@@ -140,35 +133,31 @@ div[data-testid="cell-frame-container"] img {
 
 /* El recuadro (antes negro con borde blanco) pasa a blanco con borde negro */
 div[data-testid^="list-item-"] div[role="gridcell"] div[aria-selected="true"] div[data-testid="cell-frame-container"] {
-  background-color: #e3021d !important;
+  background-color: white !important;
 }
 
-/* Textos: nombre, hora, último mensaje -> negro cuando está seleccionado */
 
-/*
-POR AHORA EL DISEÑO LO DEJO BLANCO PERO POR SI CAMBIO DE OPINION
 div[data-testid^="list-item-"] div[role="gridcell"] div[aria-selected="true"] div[data-testid="cell-frame-title"] span,
 div[data-testid^="list-item-"] div[role="gridcell"] div[aria-selected="true"] div[data-testid="cell-frame-primary-detail"] span,
 div[data-testid^="list-item-"] div[role="gridcell"] div[aria-selected="true"] div[data-testid="cell-frame-secondary"] span {
-  color: white !important;
+  color: black !important;
 }
-*/
+
 
 /* ------------------------------------------------------------
    4c. HOVER -> mismo efecto invertido al pasar el mouse
    ------------------------------------------------------------ */
 div[data-testid^="list-item-"] div[role="gridcell"]:hover div[data-testid="cell-frame-container"] {
-  background-color: #e3021d !important;
+  background-color: white !important;
 }
 
-/*
-POR AHORA EL DISEÑO NO LO NECESITO PERO SI CAMBIO DE OPINION SON LOS HOVER DE TEXTOS Y ASI
+
 div[data-testid^="list-item-"] div[role="gridcell"]:hover div[data-testid="cell-frame-title"] span,
 div[data-testid^="list-item-"] div[role="gridcell"]:hover div[data-testid="cell-frame-primary-detail"] span,
 div[data-testid^="list-item-"] div[role="gridcell"]:hover div[data-testid="cell-frame-secondary"] span {
-  color: white !important;
+  color: black !important;
 }
-*/
+
 
 /* ------------------------------------------------------------
    5. TEXTOS: nombre, hora y último mensaje -> blancos
@@ -194,7 +183,7 @@ div[data-testid="cell-frame-secondary"] span {
    Fondo blanco, texto negro para que se lea
    ------------------------------------------------------------ */
 span[data-testid="icon-unread-count"] {
-  background-color: red !important;
+  background-color: #e3021d !important;
 }
 
 span[data-testid="icon-unread-count"] span{
@@ -210,5 +199,3 @@ span[data-testid="last-msg-status"] svg path {
   fill: red !important;
   color: red !important;
 }
-
-
