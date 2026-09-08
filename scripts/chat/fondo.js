@@ -419,7 +419,7 @@ function mostrarConexionesP5() {
 
 const P5_CONFIG_RAYO = {
     color: '#e3021d',
-    grosor: 28          // ancho del cuadrado/barra (px)
+    grosor: 35          // ancho del cuadrado/barra (px)
 };
 
 /* ---- 3.1 Generador de números pseudoaleatorios con semilla ---- */
