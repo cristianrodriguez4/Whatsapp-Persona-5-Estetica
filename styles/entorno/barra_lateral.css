@@ -1,0 +1,67 @@
+/* ==========================================================
+   BARRA LATERAL IZQUIERDA DE WHATSAPP WEB (navbar)
+   ========================================================== */
+
+/* 1) Fondo general de toda la barra lateral (header + primary + footer) */
+.x1h3rtpe{
+    background-color: #0d0c0b ;
+}
+
+/* ==========================================================
+   2) BOTONES PRINCIPALES (Chats, Llamadas, Estados, etc.)
+   ========================================================== */
+
+[data-testid="navbar-primary-section"] [data-navbar-item="true"]{
+    border-radius: 0;    
+    background-color: white !important;
+
+    clip-path: polygon(
+        10% 0%,
+        100% 0%,
+        90% 100%,
+        0% 100%
+    ) !important;
+}
+
+
+/* El icono (svg) dentro del botón: lo forzamos a negro */
+[data-testid="navbar-primary-section"] [data-navbar-item-selected] svg,
+[data-testid="navbar-primary-section"] [data-navbar-item-selected] svg path {
+    fill: black !important;       
+}
+
+/* ==========================================================
+   3) BOLITA DE CHATS SIN LEER / INDICADOR VERDE
+   Es hermana del elemento que tiene data-navbar-item-selected="true"
+   ========================================================== */
+
+.xyp3urf{
+    background-color: red;
+}
+
+/* Aseguramos que el texto del número dentro de la bolita sea blanco */
+[data-testid="navbar-primary-section"] [data-navbar-item-selected] ~ * span,
+[data-testid="navbar-primary-section"] [data-navbar-item-selected] ~ * {
+  color: white !important;
+}
+
+/* ==========================================================
+   4) SECCIÓN INFERIOR (footer): foto de perfil + multimedia
+   Los tratamos igual que los botones de arriba
+   ========================================================== */
+
+[data-testid="navbar-footer-section"] > div > div {
+  background-color: #ffffff !important;
+  clip-path: polygon(
+        10% 0%,
+        100% 0%,
+        90% 100%,
+        0% 100%
+    ) !important;
+}
+
+[data-testid="navbar-footer-section"] > div > div svg,
+[data-testid="navbar-footer-section"] > div > div svg path {
+  fill: #000000 !important;
+  color: #000000 !important;
+}
