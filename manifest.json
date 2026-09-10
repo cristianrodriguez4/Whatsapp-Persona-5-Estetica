@@ -24,7 +24,8 @@
         "./styles/chat/fondo.css",
         "./styles/chat/cabecera.css",
         "./styles/lista_chats/lista_chats.css",
-        "./styles/entorno/barra_lateral.css"
+        "./styles/entorno/barra_lateral.css",
+        "./styles/entorno/pagina_principal.css"
       ],
       "run_at": "document_idle"
     }
