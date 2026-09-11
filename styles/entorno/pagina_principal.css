@@ -3,7 +3,7 @@
    ========================================================== */
 
 /* 1) Fondo negro del contenedor completo */
-[data-testid="intro-panel"] {
+[data-testid="intro-panel"]{
     background-color: #0d0c0b !important;
 }
 
