@@ -1,0 +1,26 @@
+
+[data-testid="status-header"],
+[data-testid="status-list-drawer"],
+[data-testid="newsletter-drawer"],
+[data-testid="community-drawer"]
+{
+    background-image: url(../../icons/img2.svg);
+}
+
+
+[data-testid="newsletter-drawer"] header,
+[data-testid="status-drawer"] header,
+[data-testid="calls-drawer"] header,
+[data-testid="community-drawer"] header{
+    background: #0d0c0b;
+}
+
+div > [data-testid="status-header"],
+[data-testid="newsletter-recommended-unit"]
+{
+    background-image: url(../../icons/imgBGW.svg);
+}
+
+[data-testid="no-filtered-chats-container"] > div{
+    background-image: url(../../icons/imgBGW.svg);
+}
