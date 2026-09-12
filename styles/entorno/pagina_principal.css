@@ -12,7 +12,7 @@
    ========================================================== */
 [data-testid="intro_panel_v2_title_card"],
 [data-testid="intro-panel-empty-state-action-tile-group"]{
-    background-image: url(../../icons/imgBGW.svg);
+    background-image: var(--p5-icon-imgBGW);
 }
 
 

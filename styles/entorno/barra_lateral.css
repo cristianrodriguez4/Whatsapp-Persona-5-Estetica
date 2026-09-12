@@ -3,7 +3,9 @@
    ========================================================== */
 
 /* 1) Fondo general de toda la barra lateral (header + primary + footer) */
-.x1h3rtpe{
+
+
+header:has(div[data-testid="navbar-primary-section"]){
     background-color: #0d0c0b ;
 }
 
@@ -35,7 +37,7 @@
    Es hermana del elemento que tiene data-navbar-item-selected="true"
    ========================================================== */
 
-.xyp3urf{
+span[role="status"] {
     background-color: red;
 }
 

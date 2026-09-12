@@ -24,6 +24,7 @@
     --header-h: 64px;
 }
 
+
 /*
 Empujamos el contenido normal del header por encima del ::before 
 */
@@ -43,7 +44,7 @@ Empujamos el contenido normal del header por encima del ::before
     /* Alto total = alto del header + colchón para los picos */
     height: calc(var(--header-h) + var(--bulge-room)) !important;
 
-    background-image: url(../../icons/img.svg);
+    background-image: var(--p5-icon-img);
     background-size: cover;
     z-index: 1 !important;
     pointer-events: none !important;

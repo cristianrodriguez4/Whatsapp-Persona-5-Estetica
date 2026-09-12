@@ -6,7 +6,7 @@
 
 /* 1. Fondo del panel de llamadas (ya probado por ti, se mantiene igual) */
 div[data-testid="calls-drawer"] div:has(div[data-testid="chat-list"]) {
-    background-image: url(../../icons/img2.svg) !important;
+    background-image: var(--p5-icon-img2);
 }
 
 /* ------------------------------------------------------------
@@ -78,7 +78,7 @@ div[data-testid="empty-state-drawer"] > div > div {
  
 /* Hijo del nieto: el contenedor directo de los botones */
 div[data-testid="empty-state-drawer"] > div > div > div {
-    background-image: url(../../icons/imgBGW.svg) !important;
+    background-image: var(--p5-icon-imgBGW);
 }
  
 /* Botones dentro del hijo del nieto: mismo paralelogramo blanco

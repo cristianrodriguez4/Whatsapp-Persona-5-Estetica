@@ -22,7 +22,7 @@ div[data-testid^="list-item-"],
 }
 
 div:has(header[data-testid="chatlist-header"]){
-  background-image: url(../../icons/img2.svg) !important;
+  background-image: var(--p5-icon-img2) !important;
 }
 
 

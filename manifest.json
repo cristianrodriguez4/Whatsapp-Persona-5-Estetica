@@ -16,7 +16,8 @@
         "https://web.whatsapp.com/*"
       ],
       "js": [
-        "./scripts/chat/fondo.js"
+        "./scripts/chat/fondo.js",
+        "./scripts/entorno/iconos.js"
       ],
       "css": [
         "./styles/chat/burbujas.css",
@@ -35,7 +36,8 @@
   "web_accessible_resources": [
     {
       "resources": [
-        "fonts/*"
+        "fonts/*",
+        "icons/*"
       ],
       "matches": [
         "https://web.whatsapp.com/*"

@@ -4,7 +4,7 @@
 [data-testid="newsletter-drawer"],
 [data-testid="community-drawer"]
 {
-    background-image: url(../../icons/img2.svg);
+    background-image: var(--p5-icon-img2);
 }
 
 
@@ -18,9 +18,9 @@
 div > [data-testid="status-header"],
 [data-testid="newsletter-recommended-unit"]
 {
-    background-image: url(../../icons/imgBGW.svg);
+    background-image: var(--p5-icon-imgBGW);
 }
 
 [data-testid="no-filtered-chats-container"] > div{
-    background-image: url(../../icons/imgBGW.svg);
+    background-image: var(--p5-icon-imgBGW);
 }
