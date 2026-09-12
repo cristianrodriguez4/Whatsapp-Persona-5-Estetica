@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "Tema persona 5 WhatsApp",
+  "name": "Tema Persona 5 Royal WhatsApp",
   "version": "1.0.0",
-  "description": "Personaliza el color de burbujas de mensajes en WhatsApp Web en un estilo de los chats de persona 5 royal.",
+  "description": "Personaliza el hambiente de WhatsApp Web con el estilo de los Persona 5 royal.",
   "icons": {
     "16": "icons/icon16.png",
     "32": "icons/icon32.png",
@@ -36,7 +36,6 @@
   "web_accessible_resources": [
     {
       "resources": [
-        "fonts/*",
         "icons/*"
       ],
       "matches": [
