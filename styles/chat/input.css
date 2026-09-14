@@ -1,3 +1,7 @@
+/* =======
+   Input
+   ======= */
+
 /*
 Quitar esquinas redondeadas del input
 */
@@ -7,8 +11,7 @@ Quitar esquinas redondeadas del input
 .x1jfkl46 { border-end-start-radius: 0 !important; }
 .x17m9png { border-start-start-radius: 0 !important; }
 
-/* La clase que realmente envuelve el cuadro de texto ->
-   se vuelve transparente y deja que los pseudo-elementos pinten */
+
 .xk7ee7b {
     position: relative !important;
     background: transparent !important;
@@ -16,7 +19,9 @@ Quitar esquinas redondeadas del input
     overflow: visible !important;
 }
 
-/* BORDE EXTERIOR NEGRO */
+/*
+    BORDE EXTERIOR NEGRO 
+*/
 .xk7ee7b::before {
     content: "" !important;
     position: absolute !important;
@@ -35,7 +40,9 @@ Quitar esquinas redondeadas del input
     pointer-events: none !important;
 }
 
-/* RELLENO INTERIOR BLANCO */
+/* 
+    RELLENO INTERIOR BLANCO 
+*/
 .xk7ee7b::after {
     content: "" !important;
     position: absolute !important;
@@ -54,7 +61,9 @@ Quitar esquinas redondeadas del input
     pointer-events: none !important;
 }
 
-/* CONTENIDO (el texto que escribes) por encima de los pseudo-elementos */
+/* 
+    CONTENIDO
+*/
 .xk7ee7b > * {
     position: relative !important;
     z-index: 2 !important;
@@ -64,13 +73,10 @@ Quitar esquinas redondeadas del input
     color: black !important;
 }
 
-/* Quitar la sombra que causa problemas y se pisa*/
 .xkfubxc {
     box-shadow: none !important;
 }
 
-/* Placeholder ("Escribe un mensaje") en gris oscuro.
-   Si no aplica, inspecciona directamente el elemento del placeholder. */
 [data-testid="compose-box"] div[contenteditable="true"]:empty:before {
     color: #4a4a4a !important;
     opacity: 1 !important;

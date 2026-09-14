@@ -1,12 +1,6 @@
-/* ============================================
-   CONVERSATION HEADER - Borde inferior irregular
-   con clip-path y 7 puntos ajustables.
-
-   Lógica:
-   - El header se vuelve transparente.
-   - El ::before dibuja la foto en el fondo
-     para poder tener picos que sobresalgan hacia abajo.
-   ============================================ */
+/* =========
+   Cabecera
+   ========= */
 
 [data-testid="conversation-header"] {
     position: relative !important;
@@ -73,18 +67,9 @@ Empujamos el contenido normal del header por encima del ::before
 
 
 
-/* ============================================
-   FOTO DE PERFIL (dentro del header)
- 
-   - El <img> no puede tener ::before/::after de forma confiable
-     (es un elemento reemplazado), así que el cuadro blanco
-     irregular va en el DIV que envuelve la foto, no en la foto.
-   - Identificamos ese div por el atributo style inline que trae
-     las variables --height / --width (lo viste en tu inspector).
-   - Todo escopeado a [data-testid="conversation-header"] para no
-     tocar fotos de perfil en otras partes de la app (lista de
-     chats, etc.) que reusan las mismas clases.
-   ============================================ */
+/* ================
+   FOTO DE PERFIL
+   ================ */
  
 /* Foto cuadrada (quitamos el radio circular en las 4 esquinas) */
 [data-testid="conversation-header"] img.x1c9tyrk.xeusxvb.x1pahc9y.x1ertn4p {
@@ -93,13 +78,9 @@ Empujamos el contenido normal del header por encima del ::before
     border-end-start-radius: 0 !important;
     border-end-end-radius: 0 !important;
     position: relative !important;
-    z-index: 2 !important;/* por encima del cuadro blanco */
+    z-index: 2 !important;
 }
  
-
-/* Div que envuelve la foto -> ancla para el cuadro irregular */
-
-
 [data-testid="conversation-header"] div:has(> img) {
     margin-left: 10px;
     position: relative !important;
@@ -107,15 +88,13 @@ Empujamos el contenido normal del header por encima del ::before
     border: 10px solid black;
 }
  
-/* CUADRO BLANCO tipo "recorte" (mismo estilo que usas en los
-   mensajes de texto: un trapecio con los lados cortados en diagonal),
-   pero un poco más grande que la foto */
+/* 
+    CUADRO BLANCO 
+*/
 [data-testid="conversation-header"] div:has(> img)::before {
     content: "" !important;
     position: absolute !important;
  
-    /* Cuánto sobresale el cuadro respecto al tamaño exacto de la foto.
-       Súbelo si lo quieres todavía más grande. */
     --frame-grow: 8px;
     top: -4px!important;
     left: -10px !important;
@@ -123,20 +102,13 @@ Empujamos el contenido normal del header por encima del ::before
     bottom: -6px !important;
  
     background-color: white !important;
-    z-index: 1 !important; /* debajo de la foto, encima del fondo del header */
+    z-index: 1 !important;
     pointer-events: none !important;
  
-    /* Mismo tipo de corte diagonal que usas en los mensajes
-       (10% 0%, 100% 0%, 94% 100%, 10% 100%), ajustable con variables
-       por si quieres un corte más o menos pronunciado */
-    --cut-top-left: 15%;
-    --cut-bottom-right: 90%;
-    --cut-bottom-left: 0%;
- 
     clip-path: polygon(
-        var(--cut-top-left) 0%,
+        15% 0%,
         100% 0%,
-        var(--cut-bottom-right) 100%,
-        var(--cut-bottom-left) 100%
+        90% 100%,
+        0% 100%
     ) !important;
 }

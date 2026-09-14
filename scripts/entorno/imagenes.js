@@ -1,10 +1,13 @@
+/* =========================================================
+   Permitir que Chrome y Edge peudan acceder a las imagenes formato SVG
+   ========================================================= */
+
 (function inyectarUrlsIconosP5() {
-  // Funciona en Chrome/Edge y en Firefox
   const getURL = (typeof chrome !== 'undefined' && chrome.runtime?.getURL)
     ? chrome.runtime.getURL.bind(chrome.runtime)
     : (typeof browser !== 'undefined' && browser.runtime?.getURL)
       ? browser.runtime.getURL.bind(browser.runtime)
-      : (path) => path; // fallback (no debería hacer falta)
+      : (path) => path;
 
   const style = document.createElement('style');
   style.id = 'p5-extension-urls';

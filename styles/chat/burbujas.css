@@ -1,11 +1,10 @@
 /* =========================================================
-   PERSONA 5 - BURBUJAS
-   FASE: PRUEBA DE FONDO PROPIO
+   Estructura de las burbujas de chat 
    ========================================================= */
 
-/* ---------------------------------------------------------
-   1. VARIABLES DE WHATSAPP
-   --------------------------------------------------------- */
+/* ---------
+   Variables
+   --------- */
 :root {
     /* Color de mensajes recibidos */
     --WDS-systems-bubble-surface-incoming: black !important;
@@ -15,27 +14,27 @@
     --xdsiky0: 0px !important;
 }
 
-/* ---------------------------------------------------------
-   2. OCULTAR LAS COLAS NATIVAS
-   ---------------------------------------------------------  */
+/* --------------
+   Ocultar Colas
+   --------------  */
 [data-testid="conversation-panel-messages"] .x1n2onr6 + .x1n2onr6 {
     margin-top: 10px !important;
 }
  
-[data-testid="tail-out"], [data-testid="tail-in"]{
+span[data-testid="tail-out"], span[data-testid="tail-in"]{
     display: none;
 }
 
-/* =========================================================
-   3. BURBUJA ENVIADA
-   ========================================================= */
+/* ------------------
+   Burbujas Enviadas
+   ------------------  */
 .x1g5lz36 {
     position: relative !important;
     background: transparent !important;
     overflow: visible !important;
 }
 
-/* BORDE EXTERIOR NEGRO */
+/* BORDE NEGRO */
 .x1g5lz36::before {
     content: "" !important;
     position: absolute !important;
@@ -84,16 +83,16 @@
 }
 
 
-/* =========================================================
-   4. BURBUJA RECIBIDA
-   ========================================================= */
+/* -------------------
+   Burbujas Recibidas
+   ------------------- */
 .x1ew7x2d {
     position: relative !important;
     background: transparent !important;
     overflow: visible !important;
 }
 
-/* BORDE EXTERIOR BLANCO */
+/* BORDE BLANCO */
 .x1ew7x2d::before {
     content: "" !important;
     position: absolute !important;
@@ -136,15 +135,9 @@
     z-index: 2 !important;
 }
 
-/* =========================================================
-   5. MENSAJES CITADOS
-   ========================================================= */
-
-/* ---------------------------------------------------------
-   PASO 1 — Estilo final de la caja de la cita (RECIBIDO / ENVIADO)
-   - Cita en mensaje RECIBIDO: fondo blanco, texto negro
-   - Cita en mensaje ENVIADO:  fondo negro, texto blanco
-   --------------------------------------------------------- */
+/* =================
+   MENSAJES CITADOS
+   ================= */
 
 /* QUITAR LA BARRA DEL COMIENZO DEL MENSAJE CITADO */
 
@@ -152,12 +145,15 @@
     width: 0;
 }
 
-/* Quitarle el fondo a los mensajes citados recibidos*/
+/* 
+    Quitarle el fondo a los mensajes citados recibidos
+*/
+
 .x1bu39yj{
     background: transparent;
 }
 
-/* ===== Cita dentro de un mensaje RECIBIDO ===== */
+/* Cita dentro de un mensaje RECIBIDO */
 .x1ew7x2d [data-testid="quoted-message"] {
     position: relative !important;
     background: transparent !important;
@@ -215,7 +211,9 @@
 }
 
 
-/* ===== Cita dentro de un mensaje ENVIADO ===== */
+/*
+    Cita dentro de un mensaje ENVIADO 
+*/
 
 .x1g5lz36 [data-testid="quoted-message"] {
     position: relative !important;
@@ -273,18 +271,12 @@
     margin-bottom: 12px !important;
 }
 
-/* ---------------------------------------------------------
-   PASO 2 — separar el paralelogramo real (RECIBIDO Y ENVIADO)
+/* ------------------
+   Separar Secciones
+   ------------------ */
 
-   Cada regla queda anclada a su wrapper (.x1ew7x2d
-   para recibido, .x1g5lz36 para enviado) usando el
-   combinador descendiente, así cada lado solo afecta a sus
-   propios mensajes.
-   --------------------------------------------------------- */
+/* ===== RECIBIDOS ===== */
 
-/* ===== 3.A — RECIBIDOS ===== */
-
-/* Anular el paralelogramo del wrapper SOLO si tiene cita adentro */
 .x1ew7x2d:has([data-testid="quoted-message"])::before,
 .x1ew7x2d:has([data-testid="quoted-message"])::after {
     content: none !important;
@@ -294,8 +286,6 @@
     background: transparent !important;
 }
 
-/* Darle el paralelogramo real al bloque de RESPUESTA,
-   solo dentro de un wrapper de mensaje RECIBIDO */
 .x1ew7x2d div:has(> [data-testid="quoted-message"]) + div {
     position: relative !important;
     background: transparent !important;
@@ -343,7 +333,7 @@
     z-index: 2 !important;
 }
 
-/* ===== 3.B — ENVIADOS ===== */
+/* ===== ENVIADOS ===== */
 
 /* Anular el paralelogramo del wrapper SOLO si tiene cita adentro */
 .x1g5lz36:has([data-testid="quoted-message"])::before,
@@ -355,8 +345,6 @@
     background: transparent !important;
 }
 
-/* Darle el paralelogramo real al bloque de RESPUESTA,
-   solo dentro de un wrapper de mensaje ENVIADO */
 .x1g5lz36 div:has(> [data-testid="quoted-message"]) + div {
     position: relative !important;
     background: transparent !important;

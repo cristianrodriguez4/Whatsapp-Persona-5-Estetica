@@ -1,11 +1,10 @@
 /* =========================================================
-   P5 - Conexiones entre mensajes + URLs de iconos (Chrome)
+   P5 - Conexiones entre mensajes 
    ========================================================= */
 
 (function () {
   'use strict';
 
-  /* ---- URLs de iconos (Chrome/Edge no resuelven rutas relativas en CSS) ---- */
   function inyectarUrlsIconos() {
     const getURL =
       typeof chrome !== 'undefined' && chrome.runtime?.getURL
@@ -205,7 +204,6 @@
     });
   }
 
-  /* ---- Observadores (sin bucle infinito de rAF) ---- */
   function observarPanel(panel) {
     if (observerPanel) {
       observerPanel.disconnect();

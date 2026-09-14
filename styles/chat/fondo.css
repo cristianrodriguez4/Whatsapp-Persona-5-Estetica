@@ -3,8 +3,6 @@ div[data-testid="conversation-panel-messages"]
     background-color: #0d0c0b;
 }
 
-
-/* Fondo detrás de todo el compositor -> se queda simple, en rojo */
 div[data-testid="compose-box"] {
     background-color: #0d0c0b !important;
     border-radius: 0 !important;

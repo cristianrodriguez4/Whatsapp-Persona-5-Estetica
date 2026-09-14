@@ -1,14 +1,10 @@
-/* ============================================================
-   WHATSAPP - ESTETICA PERSONA 5
-   Archivo: Lista de chats (panel izquierdo)
-   ============================================================ */
+/* =========================================================
+   Lista de chats
+   ========================================================= */
 
-
-   /* ------------------------------------------------------------
-   1. FONDO GENERAL DEL PANEL "side" (todo lo que no es el header)
-   ------------------------------------------------------------ */
-
-/* Contenedor del buscador + filtros, por si tiene su propio fondo */
+/* 
+  Fondo completo 
+*/
 
 div[data-testid="chat-list-search-container"],
 div:has(div[data-testid="chat-list-search-container"]),
@@ -26,9 +22,9 @@ div:has(header[data-testid="chatlist-header"]){
 }
 
 
-/* ------------------------------------------------------------
-   2. BOTON DE NUEVO CHAT
-   ------------------------------------------------------------ */
+/* ------------------
+   Boton nuevo chat
+   ------------------  */
 
 .xfn3atn{
   background-color: white !important;
@@ -44,10 +40,9 @@ div:has(header[data-testid="chatlist-header"]){
   )
 }
 
-/* ------------------------------------------------------------
-   3. FILTROS (Todos / No leídos / Favoritos)
-   ------------------------------------------------------------ */
-
+/* ------------------
+   Lista de Filtros
+   ------------------  */
 div[aria-label="chat-list-filters"] div[data-testid="filter-button"]{
   bottom: -5px !important;
   top: -5px !important;
@@ -69,7 +64,6 @@ div[aria-label="chat-list-filters"] div[data-testid="filter-button"] button {
   
 }
 
-/* Filtro seleccionado (normalmente resaltado en verde) -> rojo */
 div[aria-label="chat-list-filters"] div[data-testid="filter-button"] button[aria-selected="true"]{
   pointer-events: none;
   color: white !important;
@@ -84,14 +78,9 @@ div[aria-label="chat-list-filters"] div[data-testid="filter-button"] button[aria
 }
 
 
-/* ------------------------------------------------------------
-   4. CADA ITEM DE CHAT (cell-frame-container)
-   Estilo "burbuja Persona 5": fondo negro, borde blanco, texto blanco
-   ------------------------------------------------------------ */
-
-/* La caja que envuelve foto + nombre + mensaje + hora */
-
-
+/* ------------------
+   Lista de chats
+   ------------------  */
 
 div[data-testid="cell-frame-container"]{
   margin-top: 10px;
@@ -122,16 +111,15 @@ div[data-testid^="list-item-"]{
 }
 
 
-/* Fotos de perfil: cuadradas en vez de circulares */
+/* Fotos de perfil */
 div[data-testid="cell-frame-container"] img {
   border-radius: 0 !important;
 }
 
-/* ------------------------------------------------------------
-   4b. CHAT SELECCIONADO -> invierte colores (fondo blanco, borde negro, texto negro)
-   ------------------------------------------------------------ */
+/* ------------------
+   Chat seleccioando
+   ------------------  */
 
-/* El recuadro (antes negro con borde blanco) pasa a blanco con borde negro */
 div[data-testid^="list-item-"] div[role="gridcell"] div[aria-selected="true"] div[data-testid="cell-frame-container"] {
   background-color: white !important;
 }
@@ -144,13 +132,12 @@ div[data-testid^="list-item-"] div[role="gridcell"] div[aria-selected="true"] di
 }
 
 
-/* ------------------------------------------------------------
-   4c. HOVER -> mismo efecto invertido al pasar el mouse
-   ------------------------------------------------------------ */
+/* -------------------------
+   Chat seleccionado hover
+   -------------------------  */
 div[data-testid^="list-item-"] div[role="gridcell"]:hover div[data-testid="cell-frame-container"] {
   background-color: white !important;
 }
-
 
 div[data-testid^="list-item-"] div[role="gridcell"]:hover div[data-testid="cell-frame-title"] span,
 div[data-testid^="list-item-"] div[role="gridcell"]:hover div[data-testid="cell-frame-primary-detail"] span,
@@ -158,10 +145,6 @@ div[data-testid^="list-item-"] div[role="gridcell"]:hover div[data-testid="cell-
   color: black !important;
 }
 
-
-/* ------------------------------------------------------------
-   5. TEXTOS: nombre, hora y último mensaje -> blancos
-   ------------------------------------------------------------ */
 div[data-testid="cell-frame-title"],
 div[data-testid="cell-frame-title"] span {
   color: white !important;
@@ -178,10 +161,10 @@ div[data-testid="cell-frame-secondary"] span {
 }
 
 
-/* ------------------------------------------------------------
-   6. CONTADOR DE NO LEIDOS (icon-unread-count)
-   Fondo blanco, texto negro para que se lea
-   ------------------------------------------------------------ */
+/* -------------------
+   Contador no leidos
+   ------------------- */
+
 span[data-testid="icon-unread-count"] {
   background-color: #e3021d !important;
 }
@@ -190,10 +173,9 @@ span[data-testid="icon-unread-count"] span{
   color: white !important;
 }
 
-/* ------------------------------------------------------------
-   7. ESTADO DEL ULTIMO MENSAJE (palomitas de visto/no visto)
-   Verde -> rojo
-   ------------------------------------------------------------ */
+/* ------------------
+   Estado menasjes
+   ------------------  */
 span[data-testid="last-msg-status"] svg,
 span[data-testid="last-msg-status"] svg path {
   fill: red !important;

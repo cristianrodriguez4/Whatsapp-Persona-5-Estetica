@@ -1,18 +1,17 @@
-/* ==========================================================
-   BARRA LATERAL IZQUIERDA DE WHATSAPP WEB (navbar)
-   ========================================================== */
+/* =========================
+   BARRA LATERAL IZQUIERDA
+   ========================= */
 
-/* 1) Fondo general de toda la barra lateral (header + primary + footer) */
-
-
+/* 
+    Fondo 
+*/
 header:has(div[data-testid="navbar-primary-section"]){
     background-color: #0d0c0b ;
 }
 
-/* ==========================================================
-   2) BOTONES PRINCIPALES (Chats, Llamadas, Estados, etc.)
-   ========================================================== */
-
+/* --------------------
+   Botones principales
+   --------------------  */
 [data-testid="navbar-primary-section"] [data-navbar-item="true"]{
     border-radius: 0;    
     background-color: white !important;
@@ -25,33 +24,26 @@ header:has(div[data-testid="navbar-primary-section"]){
     ) !important;
 }
 
-
-/* El icono (svg) dentro del botón: lo forzamos a negro */
 [data-testid="navbar-primary-section"] [data-navbar-item-selected] svg,
 [data-testid="navbar-primary-section"] [data-navbar-item-selected] svg path {
     fill: black !important;       
 }
 
-/* ==========================================================
-   3) BOLITA DE CHATS SIN LEER / INDICADOR VERDE
-   Es hermana del elemento que tiene data-navbar-item-selected="true"
-   ========================================================== */
-
+/* -----------------------------
+   Indicador mensajes sin leer
+   -----------------------------  */
 span[role="status"] {
     background-color: red;
 }
 
-/* Aseguramos que el texto del número dentro de la bolita sea blanco */
 [data-testid="navbar-primary-section"] [data-navbar-item-selected] ~ * span,
 [data-testid="navbar-primary-section"] [data-navbar-item-selected] ~ * {
   color: white !important;
 }
 
-/* ==========================================================
-   4) SECCIÓN INFERIOR (footer): foto de perfil + multimedia
-   Los tratamos igual que los botones de arriba
-   ========================================================== */
-
+/* ---------
+   Footer
+   --------- */
 [data-testid="navbar-footer-section"] > div > div {
   background-color: #ffffff !important;
   clip-path: polygon(

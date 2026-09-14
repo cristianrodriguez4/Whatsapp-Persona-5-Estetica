@@ -1,33 +1,24 @@
-/* ============================================================
-   WhatsApp Web — Calls Drawer restyle
-   Selección por FUNCIÓN, no por índice (list-item-N es inestable
-   porque se comparte con la lista de chats normal).
-   ============================================================ */
+/* ===========
+   Llamandas
+   =========== */
 
-/* 1. Fondo del panel de llamadas (ya probado por ti, se mantiene igual) */
 div[data-testid="calls-drawer"] div:has(div[data-testid="chat-list"]) {
     background-image: var(--p5-icon-img2);
 }
 
-/* ------------------------------------------------------------
-   2. FILAS DE TÍTULO ("Favoritos", "Recientes")
-   ------------------------------------------------------------ */
+/* ------------------
+   Filas
+   ------------------  */
 div[data-testid="calls-drawer"] div[data-testid^="list-item-"]:has(h2) {
     background: transparent !important;
     background-color: transparent !important;
     box-shadow: none !important;
 }
 
-/* Por si el fondo blanco vive un nivel más adentro del h2 */
 div[data-testid="calls-drawer"] div[data-testid^="list-item-"]:has(h2) > div {
     background: transparent !important;
 }
 
-/* ------------------------------------------------------------
-   3. FILAS REALES (llamadas, "Añadir favorito")
-   ------------------------------------------------------------ */
-
-/* Contenedor: paralelogramo inclinado a la derecha, fondo blanco */
 div[data-testid="calls-drawer"] div[data-testid^="list-item-"]:not(:has(h2)):has([role="gridcell"]) {
     background-color: #ffffff !important;
     clip-path: polygon(
@@ -42,8 +33,6 @@ div[data-testid="calls-drawer"] div[data-testid^="list-item-"]:not(:has(h2)):has
         0 100%);
     overflow: hidden;
 }
-
-/* Acento interno: mismo ángulo/forma, pero fondo negro y letras blancas*/
 
 div[data-testid="calls-drawer"] div[data-testid^="list-item-"]:not(:has(h2)):has([role="gridcell"]) [data-testid^="chatlist-message"] {
     border-radius: 0 !important;
@@ -65,31 +54,27 @@ div[data-testid="calls-drawer"] div[data-testid^="list-item-"]:not(:has(h2)):has
 }
 
 
-/* ------------------------------------------------------------
-   4. EMPTY STATE (pantalla "Iniciar llamada / Nuevo enlace de
-   llamada / Llamar a un número")
-   Estructura: empty-state-drawer > hijo > NIETO > hijo-del-nieto (botones)
-   ------------------------------------------------------------ */
- 
-/* Nieto: 2 niveles hacia abajo desde empty-state-drawer */
+/* ------------------
+   Pantalla de llamadas
+   ------------------  */ 
+/* fondo */
 div[data-testid="empty-state-drawer"] > div > div {
     background: #0d0c0b !important;
 }
  
-/* Hijo del nieto: el contenedor directo de los botones */
+/* contenedor botones */
 div[data-testid="empty-state-drawer"] > div > div > div {
     background-image: var(--p5-icon-imgBGW);
 }
  
-/* Botones dentro del hijo del nieto: mismo paralelogramo blanco
-   inclinado a la derecha, texto negro */
+/* botones dentro del contenedor*/
 div[data-testid="empty-state-drawer"] > div > div > div button {
     border-radius: 0;
     background-color: #ffffff !important;
     color: #000000 !important;
     clip-path: polygon(8% 0, 100% 0, 92% 100%, 0 100%);
 }
- 
+
 div[data-testid="empty-state-drawer"] > div > div > div button * {
     color: #000000 !important;
 }

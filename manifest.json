@@ -17,7 +17,7 @@
       ],
       "js": [
         "./scripts/chat/fondo.js",
-        "./scripts/entorno/iconos.js"
+        "./scripts/entorno/imagenes.js"
       ],
       "css": [
         "./styles/chat/burbujas.css",

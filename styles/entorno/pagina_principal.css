@@ -1,20 +1,17 @@
-/* ==========================================================
-   PANEL DE INTRODUCCIÓN (pantalla principal sin chat abierto)
-   ========================================================== */
+/* ====================
+   Pantalla principal
+   ==================== */
 
-/* 1) Fondo negro del contenedor completo */
+/* Fondo */
 [data-testid="intro-panel"]{
     background-color: #0d0c0b !important;
 }
 
-/* ==========================================================
-   2) TARJETA CENTRAL (intro_panel_v2_title_card)
-   ========================================================== */
+/* Contenedor informacion */
 [data-testid="intro_panel_v2_title_card"],
 [data-testid="intro-panel-empty-state-action-tile-group"]{
     background-image: var(--p5-icon-imgBGW);
 }
-
 
 [data-testid="intro_panel_v2_title_card"]{
     border-radius: 0 !important;
@@ -26,14 +23,14 @@
     ) !important;
 }
 
-/* --- Textos (h2 + spans) dentro de la tarjeta --- */
 [data-testid="intro_panel_v2_title_card"] h2,
 [data-testid="intro_panel_v2_title_card"] h2 span,
 [data-testid="intro_panel_v2_title_card"] h2 ~ * span {
     color: #ffffff !important;
 }
 
-/* --- Botón "Ir a Llamadas" dentro de la tarjeta --- */
+/* Boton */
+
 [data-testid="intro_panel_v2_title_card"] button {
     background-color: #ffffff !important;
     color: #000000 !important;
@@ -51,10 +48,9 @@
     color: #000000 !important;
 }
 
-/* ==========================================================
-   3) FILA DE 4 BOTONES INFERIORES
-   (Enviar documento, Añadir contacto, Nueva llamada, Meta AI)
-   ========================================================== */
+/* --------------------
+   Botones inferiores
+   --------------------  */
 
 [data-testid="intro-panel"] > div:nth-child(2) button,
 [data-testid="intro-panel"] > div:nth-child(2) [role="button"] {
@@ -75,7 +71,7 @@
     color: #000000 !important;
 }
 
-/* Texto en negro (está fuera del botón, debajo, como <span> o <div>) */
+/* Texto en negro*/
 [data-testid="intro-panel"] > div:nth-child(2) span,
 [data-testid="intro-panel"] > div:nth-child(2) div {
     color: #000000 !important;
