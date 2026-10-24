@@ -32,7 +32,6 @@ Modifica los estilos visuales de WhatsApp Web (colores, animaciones y elementos 
 3. Haz clic en **Cargar complemento temporal** (Load Temporary Add-on).
 4. Selecciona el archivo `manifest.json` dentro de la carpeta del proyecto.
 
-> ⚠️ En Firefox, las extensiones cargadas de esta forma son temporales y se eliminan al cerrar el navegador. Para una instalación permanente necesitarías firmarla a través de [addons.mozilla.org](https://addons.mozilla.org).
 
 ### Uso
 
@@ -83,8 +82,6 @@ Modifies WhatsApp Web's visual styles (colors, animations, and UI elements) so i
 2. Go to `about:debugging#/runtime/this-firefox`.
 3. Click **Load Temporary Add-on**.
 4. Select the `manifest.json` file inside the project folder.
-
-> ⚠️ In Firefox, extensions loaded this way are temporary and get removed when the browser closes. For a permanent install, you'd need to sign it through [addons.mozilla.org](https://addons.mozilla.org).
 
 ### Usage
 
